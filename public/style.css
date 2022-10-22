@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    /* background-color: red; */
+    padding: 20px 15px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+nav ul a:hover {
+    background-color: #3099D5;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: black;
+    transition: .4s ease-in-out;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+/* Blog Content */
+.blog-container {
+    /* height: 100vh; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px;
+    width: 50%;
+}
+
+.blog-title {
+    width: 100%;
+    text-align: start;
+    font-size: 25px;
+    font-variant: small-caps;
+}
+
+.blog-content {
+    padding-top: 20px;
+    line-height: 1.6em;
+    text-align: justify;
+    font-size: 16px;
+}
+
+.blog-author {
+    width: 100%;
+    text-align: end;
+}
+
+.card-wrapper {
+    padding: 20px 30px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-wrapper .card button{
+    padding: 10px ;
+    margin-top: 5px;
+}
+
+.card-wrapper .card button a{
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 500px) {
+    .card-wrapper .card{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+}
