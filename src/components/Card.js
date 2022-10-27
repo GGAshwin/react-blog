@@ -1,6 +1,6 @@
 import React from "react";
-import { Outlet, Link, Route } from "react-router-dom";
-import Blog from "./Blog";
+import { Outlet, Link } from "react-router-dom";
+// import Blog from "./Blog";
 
 function Card(props) {
     return (

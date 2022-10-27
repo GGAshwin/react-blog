@@ -1,9 +1,15 @@
 import React from "react";
-import {Navigate, Route, useNavigate}  from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Write() {
-    const [formData, setFormData] = React.useState('')
+    const [formData, setFormData] = React.useState({
+        author:'',
+        title:'',
+        description:'',
+        content:''
+    })
     const navigate = useNavigate();
+    const [btnDisable, setBtnDisable] = React.useState(true);
 
     function handleChange(e) {
         setFormData(prev => {
@@ -12,9 +18,20 @@ function Write() {
                 [e.target.name]: e.target.value
             }
         })
+
     }
 
+    React.useEffect(()=>{
+        if(formData.title!=='' && formData.content!==''){
+            setBtnDisable(false)
+        }
+        else{
+            setBtnDisable(true)
+        }
+    },[formData])
+
     // console.log(formData);
+    // console.log(btnDisable);
 
     function handleSubmit(e) {
         const fetchOptions = {
@@ -35,7 +52,7 @@ function Write() {
 
     return (
         <>
-            <div className="from-container">
+            <form className="from-container">
                 <label htmlFor="author">Author</label>
                 <input type="text" name="author" id="author" placeholder="(Optional)"
                     onChange={handleChange}
@@ -54,8 +71,8 @@ function Write() {
                     onChange={handleChange}
                     required
                 />
-                <button id="submit" onClick={handleSubmit}>Submit</button>
-            </div>
+                <button id="submit" disabled={btnDisable} onClick={handleSubmit}>Submit</button>
+            </form>
         </>
     )
 }
