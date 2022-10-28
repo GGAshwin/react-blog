@@ -11,14 +11,14 @@ function Blog(props) {
         const requestOption = {
             method: 'GET',
         }
-        fetch(`http://localhost:3001/post/${from}`, requestOption)
+        fetch(`http://localhost:5000/post/${from}`, requestOption)
             .then((response) => response.json())
             .then((data) => {
                 setBLogContent(data)
             })
     }, [])
 
-    console.log(blogContent);
+    // console.log(blogContent);
 
     return (
         <>

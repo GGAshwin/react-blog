@@ -5,20 +5,13 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const Post = require('./database/models/Post');
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 5000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
 }))
+
 app.use(cors())
-// mongoose.connect("mongodb://localhost/blog",{ useNewUrlParser: true })
-
-// const db=mongoose.connection
-// db.on('error',(error)=>console.error(error))
-// db.once('open',()=>console.log('connected to database'))
-
-
-
 
 const url = `mongodb+srv://ashwin:chungus123@cluster0.cjcyr.mongodb.net/blogDB?retryWrites=true&w=majority`;
 const localUrl = "mongodb://localhost:27017/blogDB"
@@ -37,9 +30,9 @@ mongoose.connect(url, connectionParams)
     })
 
 
-app.get('/', (req, res) => {
-    res.json({ 'call': 'received' })
-})
+// app.get('/', (req, res) => {
+//     res.json({ 'call': 'received' })
+// })
 
 // Post.remove({})
 
@@ -83,7 +76,7 @@ app.post('/posts/store', (req, res) => {
     });
     console.log(req);
     Post.create(req.body, (error, post) => {
-        res.json({'status':'ok'})
+        res.json({ 'status': 'ok' })
     })
 });
 
@@ -96,4 +89,20 @@ app.post('/blog/:id', (req, res) => {
     })
 })
 
-app.listen(port)
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../build")));
+
+app.get("/", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "../build/index.html"),
+        function (err) {
+            if (err) {
+                res.status(500).send(err);
+            }
+        }
+    );
+});
+
+app.listen(port,()=>{
+    console.log('listening on port '+port);
+})

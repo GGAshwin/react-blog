@@ -10,7 +10,7 @@ function Cards() {
         const fetchOptions = {
             method: 'POST',
         }
-        fetch("http://localhost:3001/blog", fetchOptions)
+        fetch("http://localhost:5000/blog", fetchOptions)
             .then((response) => {
                 return response.json();
             })

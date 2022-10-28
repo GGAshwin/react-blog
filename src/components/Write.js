@@ -43,7 +43,7 @@ function Write() {
             body: JSON.stringify(formData)
         }
         // console.log(fetchOptions.body);
-        fetch('http://localhost:3001/posts/store', fetchOptions)
+        fetch('/posts/store', fetchOptions)
 
         e.preventDefault();
         navigate('/')
