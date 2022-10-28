@@ -11,7 +11,7 @@ function Blog(props) {
         const requestOption = {
             method: 'GET',
         }
-        fetch(`http://localhost:5000/post/${from}`, requestOption)
+        fetch(`/post/${from}`, requestOption)
             .then((response) => response.json())
             .then((data) => {
                 setBLogContent(data)

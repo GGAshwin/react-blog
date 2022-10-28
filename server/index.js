@@ -5,7 +5,9 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const Post = require('./database/models/Post');
-const port = process.env.PORT || 5000
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../build")));
+const port = process.env.PORT 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
@@ -28,23 +30,6 @@ mongoose.connect(url, connectionParams)
     .catch((err) => {
         console.error(`Error connecting to the database. n${err}`);
     })
-
-
-// app.get('/', (req, res) => {
-//     res.json({ 'call': 'received' })
-// })
-
-// Post.remove({})
-
-// Post.remove({},(err)=>{
-//     console.log("deleted all")
-// })
-
-// app.get('/blog', async (req, res) => {
-//     const posts = await Post.find({}).sort({ date: -1 })
-//     // console.log(posts[0].id)
-//     res.json({ data: posts })
-// });
 
 app.post('/blog', async (req, res) => {
     const posts = await Post.find({}).sort({ date: -1 })
@@ -89,8 +74,10 @@ app.post('/blog/:id', (req, res) => {
     })
 })
 
-const path = require("path");
-app.use(express.static(path.join(__dirname, "../build")));
+// test endpoint
+app.get('/api/test',(req,res)=>{
+    res.send('Working at port ')
+})
 
 app.get("/", function (_, res) {
     res.sendFile(
