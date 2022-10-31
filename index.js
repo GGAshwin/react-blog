@@ -6,8 +6,8 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const Post = require('./database/models/Post');
 const path = require("path");
-app.use(express.static(path.join(__dirname, "../build")));
-const port = process.env.PORT 
+app.use(express.static(path.join(__dirname, "/frontend/build")));
+const port = process.env.PORT || 5000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
@@ -75,20 +75,21 @@ app.post('/blog/:id', (req, res) => {
 })
 
 // test endpoint
-app.get('/api/test',(req,res)=>{
+app.get('/api/test', (req, res) => {
     res.send('Working at port ')
 })
 
-app.get("/", function (_, res) {
-    res.sendFile(
-        path.join(__dirname, "../build/index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err);
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging')
+    app.get("*", function (_, res) {
+        res.sendFile(
+            path.join(__dirname, "/frontend/build/index.html"),
+            function (err) {
+                if (err) {
+                    res.status(500).send(err);
+                }
             }
-        }
-    );
-});
+        );
+    });
 
 app.listen(port, () => {
     console.log('listening on port ' + port);
