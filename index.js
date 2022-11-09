@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors())
 
-const url = `mongodb+srv://ashwin:chungus123@cluster0.cjcyr.mongodb.net/blogDB?retryWrites=true&w=majority`;
+const url = `mongodb+srv://<user:pass>3@cluster0.cjcyr.mongodb.net/blogDB?retryWrites=true&w=majority`;
 const localUrl = "mongodb://localhost:27017/blogDB"
 // const url = `mongodb+srv:/<username:password>@cluster0.cjcyr.mongodb.net/blogDB?retryWrites=true&w=majority`;
 
