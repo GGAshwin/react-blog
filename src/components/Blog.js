@@ -11,7 +11,7 @@ function Blog(props) {
         const requestOption = {
             method: 'GET',
         }
-        fetch(`/post/${from}`, requestOption)
+        fetch(`https://dark-cyan-cape.cyclic.app/post/${from}`, requestOption)
             .then((response) => response.json())
             .then((data) => {
                 setBLogContent(data)

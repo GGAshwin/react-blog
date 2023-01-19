@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const Post = require('./database/models/Post');
 const path = require("path");
 app.use(express.static(path.join(__dirname, "../build")));
-const port = process.env.PORT 
+const port = process.env.PORT || 3000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors())
 
-const url = `mongodb+srv://ashwin:chungus123@cluster0.cjcyr.mongodb.net/blogDB?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${process.env.pass}@cluster0.cjcyr.mongodb.net/blogDB?retryWrites=true&w=majority`;
 const localUrl = "mongodb://localhost:27017/blogDB"
 // const url = `mongodb+srv:/<username:password>@cluster0.cjcyr.mongodb.net/blogDB?retryWrites=true&w=majority`;
 
@@ -36,6 +36,12 @@ app.post('/blog', async (req, res) => {
     // console.log(posts[0].id)
     res.json({ data: posts })
 });
+
+// app.get('/blog', async (req, res) => {
+//     const posts = await Post.find({}).sort({ date: -1 })
+//     // console.log(posts[0].id)
+//     res.json({ data: posts })
+// });
 
 app.get('/posts/new', (req, res) => {
     res.render('create')
@@ -71,23 +77,29 @@ app.post('/blog/:id', (req, res) => {
     Post.findByIdAndDelete(id, (err) => {
         if (err) throw err
         res.redirect('/blog')
+        console.log('logged');
     })
 })
 
 // test endpoint
 app.get('/api/test',(req,res)=>{
-    res.send('Working at port ')
+    res.send('Working at')
 })
 
-app.get("/", function (_, res) {
-    res.sendFile(
-        path.join(__dirname, "../build/index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err);
-            }
-        }
-    );
+app.get('/', function (req, res) {
+    // res.sendFile(
+    //     path.join(__dirname, "../build/index.html"),
+    //     function (err) {
+    //         if (err) {
+    //             res.status(500).send(err);
+    //         }
+    //         else{
+    //             console.log('sent successfully');
+    //         }
+    //     }
+    // );
+    console.log('logged');
+    res.send('working at port ' + port)
 });
 
 app.listen(port, () => {
