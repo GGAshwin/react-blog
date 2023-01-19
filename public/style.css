@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    /* background-color: red; */
+    padding: 20px 15px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+nav ul a:hover {
+    background-color: #3099D5;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: black;
+    transition: .4s ease-in-out;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+/* Blog Content */
+.blog-container {
+    /* height: 100vh; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px;
+    width: 50%;
+}
+
+.blog-title {
+    width: 100%;
+    text-align: start;
+    font-size: 25px;
+    font-variant: small-caps;
+}
+
+.blog-content {
+    padding-top: 20px;
+    line-height: 1.6em;
+    text-align: justify;
+    font-size: 16px;
+}
+
+.blog-author {
+    width: 100%;
+    text-align: end;
+}
+
+.card-wrapper {
+    padding: 20px 30px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-wrapper .card button {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.card-wrapper .card button a {
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+    border: 2px solid;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card .card-desc {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.from-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 30em;
+    height: 10em;
+    padding: 10px;
+}
+
+input,
+textarea {
+    border-radius: 5px;
+    border: 2px solid #3099D5;
+}
+
+input:active,
+textarea:active {
+    border: 2px solid #121212;
+}
+
+label {
+    width: 100%;
+    float: left;
+}
+
+#submit {
+    padding: 10px 30px;
+    background-color: #3099D5;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    color: whitesmoke;
+    margin-top: 10px;
+}
+
+#submit:disabled{
+    background-color: #969696;
+    color: black;
+    cursor: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .card-wrapper .card {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+}
