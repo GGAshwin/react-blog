@@ -9,11 +9,6 @@ function Cards() {
     React.useEffect(() => {
         const fetchOptions = {
             method: 'POST',
-            mode: 'cors',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            referrerPolicy:'strict-origin-when-cross-origin'
         }
         fetch("https://dark-cyan-cape.cyclic.app/blog", fetchOptions)
             .then((response) => {
