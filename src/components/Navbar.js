@@ -7,7 +7,6 @@ function Navbar() {
         <nav>
             <ul>
                 <Link to="/">Home</Link>
-                <Link to="/blogs">Write</Link>
             </ul>
         </nav>
         <Outlet />
