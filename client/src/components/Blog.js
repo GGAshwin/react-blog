@@ -27,10 +27,10 @@ function Blog(props) {
                     <p>{blogContent.title}</p>
                 </div>
                 <div className="blog-content">
-                    <p>{blogContent.content}</p>
+                    <p style={{whiteSpace:"pre-wrap"}}>{blogContent.content}</p>
                 </div>
                 <div className="blog-author">
-                    <blockquote>-{blogContent.author}</blockquote>
+                    <b style={{fontVariant:"small-caps"}}>-{blogContent.author}</b>
                 </div>
             </div>
         </>

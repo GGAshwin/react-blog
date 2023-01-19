@@ -11,6 +11,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Home />} />
+<<<<<<< HEAD:src/App.js
+=======
+          <Route path="/blogs" element={<Write />} />
+>>>>>>> 4177488c6ab80a7dad68cfa577c66722794e71df:client/src/App.js
           <Route path="read" element={<Blog />} />
         </Route>
       </Routes>
