@@ -12,11 +12,22 @@ function Blog(props) {
             method: 'GET',
         }
         fetch(`https://dark-cyan-cape.cyclic.app/post/${from}`, requestOption)
+        // fetch(`http://localhost:3001/post/${from}`, requestOption)
             .then((response) => response.json())
             .then((data) => {
                 setBLogContent(data)
+                console.log(blogContent.imgLink)
             })
     }, [])
+
+    try{
+        // console.log((JSON.parse(sessionStorage.getItem("data"))).find(data=>{
+        //     data._id===`${from}`
+        // }))
+    }
+    catch(e){
+
+    }
 
     // console.log(blogContent);
 
@@ -25,6 +36,9 @@ function Blog(props) {
             <div className="blog-container">
                 <div className="blog-title">
                     <p>{blogContent.title}</p>
+                </div>
+                <div className="blog-img">
+                    <img src={blogContent.imgLink} alt="img" />
                 </div>
                 <div className="blog-content">
                     <p>{blogContent.content}</p>
